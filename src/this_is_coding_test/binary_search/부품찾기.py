@@ -1,6 +1,17 @@
-# def solve():
-#     # 여기에 풀이 작성
-#     pass
+def binary_search(array, target, start, end):
+    if start > end:
+        print("no", end= " ")
+        return None
+    mid = (start + end) // 2
+    
+    if target == array[mid]:
+        print("yes", end=" ")
+        return None
+    elif target > array[mid]:
+        binary_search(array, target, mid + 1, end)
+    else:
+        binary_search(array, target, start, mid - 1)
+    
 
 if __name__ == "__main__":
     # 입력 받기
@@ -10,8 +21,5 @@ if __name__ == "__main__":
     m = int(input())
     requirements = list(map(int, input().split()))
     
-    for r in requirements:
-        if r in supply:
-            print("yes", end=" ")
-        else:
-            print("no", end=" ")
+    for requirement in requirements:
+        binary_search(sorted(supply), requirement, 0, n - 1)
