@@ -6,12 +6,16 @@ INF = int(1e9)
 
 n,m = map(int, input().split())
 start = int(input())
+# 각 노드에 연결되어 있는 노드에 대한 정보를 담는 리스트를 만들기
 graph = [[] for i in range(n + 1)]
+# 최단 거리 테이블을 모두 무한으로 초기화
 distance = [INF] * (n + 1)
 
+# 모든 간선 정보 입력받기
 for _ in range(m):
     a,b,c = map(int, input().split())
-    distance[a].append((b,c))
+    # a번 노드에서 b번 노드로 가는 비용이 c라는 의미
+    graph[a].append((b,c))
 
 def dijkstra(start):
     q = []
