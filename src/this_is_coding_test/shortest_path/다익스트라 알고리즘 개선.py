@@ -19,7 +19,9 @@ for _ in range(m):
 
 def dijkstra(start):
     q = []
+    # 시작 노드로 가기 위한 최단 경로는 0으로 설정하여 큐에 삽입
     heapq.heappush(q, (0, start))
+    distance[start] = 0
     while q:
         # 가장 최단 거리가 짧은 노드 정보 꺼내기
         dist, now = heapq.heappop(q)
@@ -28,8 +30,8 @@ def dijkstra(start):
             continue
         #현재 노드와 연결된 다른 인접한 노드들을 확인
         for i in graph[now]:
-            cost = dist + i[1]  # 현재까지의 거리 + 다음 노드까지의 거리
-            if cost < distance[i[0]]:  # i[0]은 다음 노드의 번호
+            cost = dist + i[1]  # 현재까지의 거리 + 연결된 노드까지의 거리
+            if cost < distance[i[0]]:  # i[0]은 현재 노드와 연결된 노드의 번호
                 distance[i[0]] = cost
                 heapq.heappush(q, (cost, i[0]))
 
