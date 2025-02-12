@@ -3,10 +3,14 @@ if __name__ == "__main__":
     alphabet = []
     num = 0
     for i in input:
-        try:
-            num += int(i)
-        except Exception:
+        if i.isalpha():
             alphabet.append(i)
-    sorted_str = "".join(sorted(alphabet))
+        else:
+            num += int(i)
+    alphabet.sort()        
+    ''.join(alphabet)
     
-    print(sorted_str + str(num))
+    if num != 0:
+        alphabet.append(str(num))
+    
+    print(''.join(alphabet))
