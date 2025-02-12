@@ -1,10 +1,13 @@
 if __name__ == "__main__":
     arr = list(map(int, input()))
-    arr = list(filter(lambda x: x != 0, arr))
-    result = 1
+    result = arr[0]
     
     for i in arr:
-        result = result * i
+        if i <= 1 or result <= 1:
+            result += i
+        else:
+            result *= i
+    
     print(result)
     
     
